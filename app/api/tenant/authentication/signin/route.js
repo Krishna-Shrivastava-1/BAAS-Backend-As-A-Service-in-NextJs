@@ -19,6 +19,7 @@ export async function OPTIONS(req, { params }) {
   });
 }
 export async function POST(req) {
+    let corsResult = { allowed: false, origin: "*" };
   try {
     // ---------------- STEP 1: Validate API Key ----------------
     const authHeader = req.headers.get("authorization");
@@ -76,7 +77,7 @@ export async function POST(req) {
 
     const { projectId } = decoded;
         // Step 2: CORS validation
-    const corsResult = await corsCheck(req, projectId);
+     corsResult = await corsCheck(req, projectId);
     if (!corsResult.allowed) {
       return new Response(JSON.stringify({
         message: "Origin not allowed",

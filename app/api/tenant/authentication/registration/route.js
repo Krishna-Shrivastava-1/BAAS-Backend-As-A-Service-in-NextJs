@@ -20,6 +20,7 @@ export async function OPTIONS(req, { params }) {
 
 
 export async function POST(req) {
+  let corsResult = { allowed: false, origin: "*" };
   try {
 await database()
     // ---------------- STEP 1: Extract API Key ----------------
@@ -77,7 +78,7 @@ await database()
 
     const { userId, projectId } = decoded;
          // Step 2: CORS validation
-    const corsResult = await corsCheck(req, projectId);
+     corsResult = await corsCheck(req, projectId);
     // console.log(corsResult)
     if (!corsResult.allowed) {
       return new Response(JSON.stringify({
