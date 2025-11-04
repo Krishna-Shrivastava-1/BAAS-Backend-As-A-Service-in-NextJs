@@ -19,7 +19,8 @@ export async function OPTIONS(req, { params }) {
   });
 }
 export async function POST(req) {
-    let corsResult = { allowed: false, origin: "*" };
+  const requestOrigin = req.headers.get("origin") || "*"; 
+  let corsResult = { allowed: false, origin: requestOrigin };
   try {
     // ---------------- STEP 1: Validate API Key ----------------
     const authHeader = req.headers.get("authorization");

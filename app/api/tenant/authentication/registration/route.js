@@ -20,7 +20,8 @@ export async function OPTIONS(req, { params }) {
 
 
 export async function POST(req) {
-  let corsResult = { allowed: false, origin: "*" };
+const requestOrigin = req.headers.get("origin") || "*"; 
+  let corsResult = { allowed: false, origin: requestOrigin };
   try {
 await database()
     // ---------------- STEP 1: Extract API Key ----------------
