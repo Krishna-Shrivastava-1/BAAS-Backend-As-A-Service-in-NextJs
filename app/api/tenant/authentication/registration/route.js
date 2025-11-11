@@ -172,7 +172,7 @@ await database()
     // ---------------- STEP 6: Get service schema ----------------
     const fields = service.serviceSchema?.fields || [];
     const body = await req.json();
-
+// console.log(body)
     // ---------------- STEP 7: Build simple schema definition ----------------
     const dynamicSchemaDefinition = {};
     for (const field of fields) {

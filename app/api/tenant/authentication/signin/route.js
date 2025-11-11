@@ -171,14 +171,15 @@ export async function POST(req) {
     // ---------------- STEP 6: Get Existing Tenant Collection ----------------
   
  
-    const collectionName = `user_tenant_${service._id.toString()}`.toLowerCase();
+    const collectionName = `user_tenant_${service._id.toString()}s`.toLowerCase();
+    // console.log(collectionName)
     const tenantCollection = tenantConnection.collection(collectionName);
 // console.log(tenantCollection)
     // ---------------- STEP 7: Parse Request Body ----------------
     const body = await req.json();
-    const { email, cred } = body;
+    const { email, password } = body;
 
-    if (!email || !cred) {
+    if (!email || !password) {
       return NextResponse.json(
         { message: "Email and password are required", success: false },
              {
@@ -212,7 +213,7 @@ export async function POST(req) {
     }
 // console.log(user.password)
     // ---------------- STEP 9: Verify Password ----------------
-    const isPasswordCorrect = cred === user?.password ? true:false
+    const isPasswordCorrect = password === user?.password ? true:false
     if (!isPasswordCorrect) {
       return NextResponse.json(
         { message: "Invalid credentials", success: false },
