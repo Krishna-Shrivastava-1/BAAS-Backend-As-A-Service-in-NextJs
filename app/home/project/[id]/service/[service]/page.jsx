@@ -49,6 +49,7 @@ const Page = () => {
   const fetchProjectServiceData = async () => {
     try {
       const resp = await axios.get(`/api/platform/project/fetchservice/${id}`)
+      console.log(resp?.data)
       setProjectService(resp?.data?.projectServiceData || [])
     } catch (error) {
       console.log(error)
@@ -59,7 +60,7 @@ const Page = () => {
 
   useEffect(() => {
     fetchProjectServiceData()
-  }, [])
+  }, [id, service])
 
   // ✅ Handle Login / Logout creation and redirection
   const handleDirectIntegration = async (subServiceName) => {
