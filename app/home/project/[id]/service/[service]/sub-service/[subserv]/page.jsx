@@ -153,7 +153,7 @@ const page = async ({ params }) => {
               {isLogin
                 ? `{
   "email": "example@email.com",
-  "cred": "yourpassword"
+  "password": "yourpassword"
 }`
                 : isLogout
                   ? `{}`
@@ -177,7 +177,7 @@ ${fields.map(f => `  "${f.key}": "example_${f.key}"`).join(",\n")}
     isLogin
       ? `{
     email: "user@example.com",
-    cred: "password123"
+    password: "password123"
   }`
       : isLogout
         ? `{}`
