@@ -1,7 +1,7 @@
 import { SignupForm } from "@/components/SignupForm"
 import { GalleryVerticalEnd } from "lucide-react"
 
-
+// Currently on hold
 
 export default function SignupPage() {
   return (
